@@ -64,22 +64,22 @@ int main(){
         
         ll prf[n + 1], suf[n + 1], csum[n + 1];
         csum[0] = a[0] = a[n + 1] = 0;
-        ll sum = 0, mxsum = 0;
+        ll sum = 0, mxVal = 0;
         for(ll i = 1; i <= n; i++){
         	sum += a[i];
-        	if(mxsum < a[i]) mxsum = a[i];
-        	if(sum < 0) sum = 0, mxsum = 0;
-        	prf[i] = mxsum;
+        	if(mxVal < a[i]) mxVal = a[i];
+        	if(sum < 0) sum = 0, mxVal = 0;
+        	prf[i] = mxVal;
         	csum[i] = csum[i - 1] + a[i];
-        	res = max(res, sum * mxsum);
+        	res = max(res, sum * mxVal);
         }
-        sum = 0,mxsum = 0;
+        sum = 0,mxVal = 0;
         for(ll i = n; i >= 1; i--){
         	sum += a[i];
-        	if(mxsum < a[i]) mxsum = a[i];
-        	if(sum < 0) sum = 0, mxsum = 0;
-        	suf[i] = mxsum;
-        	res = max(res, sum * mxsum);
+        	if(mxVal < a[i]) mxVal = a[i];
+        	if(sum < 0) sum = 0, mxVal = 0;
+        	suf[i] = mxVal;
+        	res = max(res, sum * mxVal);
         }
                 
         ll l[n + 1]{0}, r[n + 1]{0};
